@@ -1,0 +1,67 @@
+<ion-view>
+	<ion-nav-buttons side="left">
+		<button class="button button-clear icon-left ion-ios-location">上海</button>
+	</ion-nav-buttons>
+	<!--<ion-nav-buttons side="right">
+		<button class="button button-clear ion-android-more-vertical">123</button>
+	</ion-nav-buttons>-->
+	<ion-nav-title>
+		<div class="item-input-inset">
+			<label class="item-input-wrapper">
+				<input type="text" placeholder="搜索水果">
+				<button class="button button-clear ion-ios-search"></button>
+			</label>
+		</div>
+	</ion-nav-title>
+	<ion-content>
+	  <ion-slide-box on-slide-changed="slideHasChanged($index)"  show-pager="true" style="height:170px">
+	  <ion-slide>
+	  	<img class="full-image" src="img/slide1.jpeg">
+	  </ion-slide>
+	  <ion-slide>
+	  <img class="full-image" src="img/slide2.jpeg">
+	  </ion-slide>
+	  <ion-slide>
+	  <img class="full-image" src="img/slide3.jpeg">
+	  </ion-slide>
+	</ion-slide-box>
+	
+	<div style="padding:0 30px;margin:3px;font-size:8px;border:2px solid #28A54C">
+		<h5 style="text-align:center;font-weight:bold;color:#28A54C">果园君公告:会员等级全面升级</h5>
+			<hr />
+			<p><span style="color:#28A54C">亲爱滴果友:</span><br />
+					为了更好地服务果园会员,自2014年4月15日起，
+					天天果园会员等级制度全面升级，针对所有会员等级进行了调整，
+					由V0、V1、V2、V3、WVIP全面升级至V0、V1、V2、V3、V5、V5。
+					更多的会员福利和会员权限即将登场，敬请期待。
+			</p>
+	</div>
+			
+	<ion-list class="list-borderless">
+    	<!--<ion-item class="list card" ng-repeat="hotItem in hotItems" href="#/tab/hotItem/{{hotItem.id}}">
+		    	<img class="full-image" ng-src="{{hotItem.icon}}">
+		</ion-item>-->
+		<ion-item style="padding:0px;margin:2px">
+			
+		</ion-item>
+		
+		<ion-item  style="padding:0px">
+			<img class="full-image" src="img/hot1.jpeg">
+		</ion-item>
+		<ion-item  style="padding:0px">
+			<img class="full-image" src="img/hot2.jpeg">
+		</ion-item>
+		<ion-item  style="padding:0px">
+			<img class="full-image" src="img/hot3.jpeg">
+		</ion-item>
+		<ion-item  style="padding:0px">
+			<img class="full-image" src="img/hot4.jpeg">
+		</ion-item>
+		<ion-item  style="padding:0px">
+			<img class="full-image" src="img/hot5.jpeg">
+		</ion-item>
+	</ion-list>
+	
+	
+</ion-content>
+</ion-view>
