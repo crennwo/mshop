@@ -6,29 +6,10 @@
 		<ion-list>
 			<!--<ion-item class="item-divier">热门品类</ion-item>-->
 			<ion-item class="item-divier">全部品类</ion-item>
-			<!--<ion-item ng-repeat="category in categories" type="item-text-wrap" href="#/tab/category/{{category.id}}">-->
-			<ion-item class="item-icon-left item-icon-right" href="#/tab/category/{{category.id}}">
+			<ion-item class="item-icon-left item-icon-right" ng-repeat="category in categories" type="item-text-wrap" href="#/tab/goods/{{category.csid}}/{{category.csname}}">
 				<i class="icon ion-social-apple"></i>
-				<h2>进口鲜果</h2>
-				<p>时令最新鲜/品鲜无时差/品质鲜果</p>
-				<i class="icon ion-ios-arrow-right"></i>
-			</ion-item>
-			<ion-item class="item-icon-left item-icon-right">
-				<i class="icon ion-social-apple"></i>
-				<h2>国产鲜果</h2>
-				<p>时令最新鲜/品鲜无时差/品质鲜果</p>
-				<i class="icon ion-ios-arrow-right"></i>
-			</ion-item>
-			<ion-item class="item-icon-left item-icon-right">
-				<i class="icon ion-social-apple"></i>
-				<h2>品牌鲜果</h2>
-				<p>时令最新鲜/品鲜无时差/品质鲜果</p>
-				<i class="icon ion-ios-arrow-right"></i>
-			</ion-item>
-			<ion-item class="item-icon-left item-icon-right">
-				<i class="icon ion-social-apple"></i>
-				<h2>尝鲜小包装</h2>
-				<p>时令最新鲜/品鲜无时差/品质鲜果</p>
+				<h2>{{category.csname}}</h2>
+				<p>{{category.desc}}</p>
 				<i class="icon ion-ios-arrow-right"></i>
 			</ion-item>
 		</ion-list>

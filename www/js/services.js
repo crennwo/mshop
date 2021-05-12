@@ -1,5 +1,120 @@
 angular.module('starter.services', [])
 
+.factory('Categories', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var categories = [
+  {
+  	csid: 1,
+	csname:"国产鲜果",
+	desc:"我是国产货",
+	//这里还应该有张图片
+  },
+  {
+  	csid: 2,
+	csname:"进口鲜果",
+	desc:"我是进口货"
+  },
+  {
+  	csid: 3,
+	csname:"尝鲜小包装",
+	desc:"我是小包装"
+  },
+  {
+  	csid: 4,
+	csname:"礼品券卡",
+	desc:"我是礼品券卡"
+  },
+  {
+  	csid: 5,
+	csname:"礼盒 礼篮",
+	desc:"我是礼盒 礼篮"
+  },
+  {
+  	csid: 6,
+	csname:"营养套餐",
+	desc:"我是营养套餐"
+  }];
+
+  return {
+    all: function() {
+      return categories;
+    }
+  }
+})
+
+
+.factory('Goods', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var goods = [
+  {
+  	pid:1,
+  	pname:"我是1号水果",
+  	csid:1,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	pic:[{pic1:""},{pic2:""},{pic3:""}]
+  },
+  {
+  	pid:2,
+  	pname:"我是2号水果",
+  	csid:2,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	pic:[{pic1:""},{pic2:""},{pic3:""}]
+  },
+  {
+  	pid:3,
+  	pname:"我是3号水果",
+  	csid:3,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	pic:[{pic1:""},{pic2:""},{pic3:""}]
+  },
+  {
+  	pid:4,
+  	pname:"我是4号水果",
+  	csid:4,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	pic:[{pic1:""},{pic2:""},{pic3:""}]
+  },
+  {
+  	pid:5,  	
+  	pname:"我是5号水果",
+  	csid:5,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	pic:[{pic1:""},{pic2:""},{pic3:""}]
+  }];
+
+  return {
+    all: function() {
+      return goods;
+    },
+   	//这里模拟从后台所有数据里查出一条水果数据，实际上要查出所有的数据。而这里不需要进行处理，后台会查询好统一打包
+    get: function(categoryId) {
+      var arrayObj = new Array();
+      for (var i = 0; i < goods.length; i++) {
+        if (goods[i].csid === parseInt(categoryId)) {
+          arrayObj.push(goods[i]);
+        }
+      }
+      return arrayObj;
+    }
+  }
+})
+
+
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 

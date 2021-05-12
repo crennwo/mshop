@@ -60,6 +60,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('tab.goods', {
+      url: '/goods/:categoryId/:categoryName',
+      views: {
+       'tab-categories': {
+          templateUrl: 'templates/goods.html',
+          controller: 'GoodsCtrl'
+        }
+      }
+    })
+    
   .state('tab.me', {
     url: '/me',
     views: {
