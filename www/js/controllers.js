@@ -9,11 +9,22 @@ angular.module('starter.controllers', [])
 })
 
 .controller('GoodsCtrl', function($scope,$stateParams,Goods) {
-	$scope.goods=Goods.get($stateParams.categoryId);
-	//$scope.goods=Goods.all();
+	//$scope.goods=Goods.get($stateParams.categoryId);
+	$scope.goods=Goods.all();
 	$scope.categoryName=$stateParams.categoryName;
-	console.log($scope.goods);
 })
+
+.controller('GoodsInfoCtrl', function($scope,$stateParams,GoodsInfo) {
+//	$ionicNavBarDelegate.showBar(true);
+	//console.log("enter");
+	$scope.goodsInfo=GoodsInfo.get($stateParams.goodsId);
+})
+
+.controller('GoodsDetailCtrl', function($scope,$stateParams,GoodsDetail) {
+	console.log("enter");
+	$scope.goodsDetail=GoodsDetail.get($stateParams.goodsId);
+})
+
 
 .controller('MeCtrl', function($scope) {
 	

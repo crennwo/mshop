@@ -57,7 +57,7 @@ angular.module('starter.services', [])
   	market_price:100,
   	shop_price:50,
   	pdesc:"8斤装",
-  	pic:[{pic1:""},{pic2:""},{pic3:""}]
+  	img:"img/goods.jpeg"
   },
   {
   	pid:2,
@@ -66,7 +66,7 @@ angular.module('starter.services', [])
   	market_price:100,
   	shop_price:50,
   	pdesc:"8斤装",
-  	pic:[{pic1:""},{pic2:""},{pic3:""}]
+  	img:"img/goods.jpeg"
   },
   {
   	pid:3,
@@ -75,7 +75,7 @@ angular.module('starter.services', [])
   	market_price:100,
   	shop_price:50,
   	pdesc:"8斤装",
-  	pic:[{pic1:""},{pic2:""},{pic3:""}]
+  	img:"img/goods.jpeg"
   },
   {
   	pid:4,
@@ -84,7 +84,7 @@ angular.module('starter.services', [])
   	market_price:100,
   	shop_price:50,
   	pdesc:"8斤装",
-  	pic:[{pic1:""},{pic2:""},{pic3:""}]
+  	img:"img/goods.jpeg"
   },
   {
   	pid:5,  	
@@ -93,7 +93,7 @@ angular.module('starter.services', [])
   	market_price:100,
   	shop_price:50,
   	pdesc:"8斤装",
-  	pic:[{pic1:""},{pic2:""},{pic3:""}]
+  	img:"img/goods.jpeg"
   }];
 
   return {
@@ -109,6 +109,145 @@ angular.module('starter.services', [])
         }
       }
       return arrayObj;
+    }
+  }
+})
+
+.factory('GoodsInfo', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var goodsInfo = [
+  {
+  	pid:1,
+  	pname:"我是1号水果",
+  	csid:1,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	imgs:[{img1:"img/detail1.jpeg"},{img2:"img/detail2.jpeg"},{img3:"img/detail3.jpeg"}]
+  },
+  {
+  	pid:2,
+  	pname:"我是2号水果",
+  	csid:2,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	imgs:[{img1:"img/detail1.jpeg"},{img2:"img/detail2.jpeg"},{img3:"img/detail3.jpeg"}]
+  	//imgs:[{"img/detail1.jpeg"},{"img/detail2.jpeg"},{"img/detail3.jpeg"}]
+  },
+  {
+  	pid:3,
+  	pname:"我是3号水果",
+  	csid:3,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	imgs:[{img1:"img/detail1.jpeg"},{img2:"img/detail2.jpeg"},{img3:"img/detail3.jpeg"}]
+  	//imgs:[{"img/detail1.jpeg"},{"img/detail2.jpeg"},{"img/detail3.jpeg"}]
+  },
+  {
+  	pid:4,
+  	pname:"我是4号水果",
+  	csid:4,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	imgs:[{img1:"img/detail1.jpeg"},{img2:"img/detail2.jpeg"},{img3:"img/detail3.jpeg"}]
+  	//imgs:[{"img/detail1.jpeg"},{"img/detail2.jpeg"},{"img/detail3.jpeg"}]
+  	
+  },
+  {
+  	pid:5,  	
+  	pname:"我是5号水果",
+  	csid:5,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	imgs:[{img1:"img/detail1.jpeg"},{img2:"img/detail2.jpeg"},{img3:"img/detail3.jpeg"}]
+  	//imgs:[{"img/detail1.jpeg"},{"img/detail2.jpeg"},{"img/detail3.jpeg"}]
+  }];
+
+  return {
+   	//这里模拟从后台所有数据里查出一条水果数据，实际上要查出所有的数据。而这里不需要进行处理，后台会查询好统一打包
+    get: function(goodsId) {
+      for (var i = 0; i < goodsInfo.length; i++) {
+        if (goodsInfo[i].pid === parseInt(goodsId)) {
+			return goodsInfo[i];
+        }
+      }
+      return null;
+    }
+  }
+})
+
+
+.factory('GoodsDetail', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var goodsDetail = [
+  {
+  	pid:1,
+  	pname:"我是1号水果",
+  	csid:1,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	imgs:[{img1:"img/detail1.jpeg"},{img2:"img/detail2.jpeg"},{img3:"img/detail3.jpeg"}]
+  },
+  {
+  	pid:2,
+  	pname:"我是2号水果",
+  	csid:2,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	imgs:[{img1:"img/detail1.jpeg"},{img2:"img/detail2.jpeg"},{img3:"img/detail3.jpeg"}]
+  	//imgs:[{"img/detail1.jpeg"},{"img/detail2.jpeg"},{"img/detail3.jpeg"}]
+  },
+  {
+  	pid:3,
+  	pname:"我是3号水果",
+  	csid:3,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	imgs:[{img1:"img/detail1.jpeg"},{img2:"img/detail2.jpeg"},{img3:"img/detail3.jpeg"}]
+  	//imgs:[{"img/detail1.jpeg"},{"img/detail2.jpeg"},{"img/detail3.jpeg"}]
+  },
+  {
+  	pid:4,
+  	pname:"我是4号水果",
+  	csid:4,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	imgs:[{img1:"img/detail1.jpeg"},{img2:"img/detail2.jpeg"},{img3:"img/detail3.jpeg"}]
+  	//imgs:[{"img/detail1.jpeg"},{"img/detail2.jpeg"},{"img/detail3.jpeg"}]
+  	
+  },
+  {
+  	pid:5,  	
+  	pname:"我是5号水果",
+  	csid:5,
+  	market_price:100,
+  	shop_price:50,
+  	pdesc:"8斤装",
+  	imgs:[{img1:"img/detail1.jpeg"},{img2:"img/detail2.jpeg"},{img3:"img/detail3.jpeg"}]
+  	//imgs:[{"img/detail1.jpeg"},{"img/detail2.jpeg"},{"img/detail3.jpeg"}]
+  }];
+
+  return {
+   	//这里模拟从后台所有数据里查出一条水果数据，实际上要查出所有的数据。而这里不需要进行处理，后台会查询好统一打包
+    get: function(goodsId) {
+      for (var i = 0; i < goodsInfo.length; i++) {
+        if (goodsInfo[i].pid === parseInt(goodsId)) {
+			return goodsInfo[i];
+        }
+      }
+      return null;
     }
   }
 })

@@ -69,7 +69,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+
+  .state('goods-info', {
+      url: '/goods-info/:goodsId',
+      templateUrl: 'templates/goods-info.html',
+      controller: 'GoodsInfoCtrl'
+    })
     
+  .state('goods-info.detail', {
+      url: '/goods-details/:goodsId',
+      templateUrl: 'templates/goods-detail.html',
+      controller: 'GoodsDetailCtrl' 
+  })
+
   .state('tab.me', {
     url: '/me',
     views: {
