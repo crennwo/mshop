@@ -21,11 +21,17 @@ navigation history that also transitions its views in and out.
   
     <!-- me Tab -->
   <ion-tab title="我的果园" icon-off="ion-happy-outline" icon-on="ion-happy" href="#/tab/me">
+    <ion-nav-bar class="bar-balanced" align-title="center">
+    	<ion-nav-back-button></ion-nav-back-button>
+    </ion-nav-bar>
     <ion-nav-view name="tab-me"></ion-nav-view>
   </ion-tab>
   
     <!-- shoppingcart Tab -->
   <ion-tab title="购物车" icon-off="ion-ios-cart-outline" icon-on="ion-ios-cart" badge="3" badge-style="badge-assertive" href="#/tab/cart">
+    <ion-nav-bar class="bar-balanced" align-title="center">
+    	<ion-nav-back-button></ion-nav-back-button>
+    </ion-nav-bar>
     <ion-nav-view name="tab-cart"></ion-nav-view>
   </ion-tab>
 
@@ -35,7 +41,7 @@ navigation history that also transitions its views in and out.
   </ion-tab>-->
 
   <!-- Chats Tab -->
-  <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats">
+  <!--<ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats">-->
   	<!--<ion-nav-view>	
   		<ion-tabs class="tabs-positive tabs-striped tabs-top">
 			<ion-tab title="tab1">
@@ -49,12 +55,12 @@ navigation history that also transitions its views in and out.
 			</ion-tab>
 		</ion-tabs>
   	</ion-nav-view>  -->
-  </ion-tab>
+  <!--</ion-tab>-->
 
   <!-- Account Tab -->
-  <ion-tab title="Account" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/account">
+  <!--<ion-tab title="Account" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/account">
     <ion-nav-view name="tab-account"></ion-nav-view>
-  </ion-tab>
+  </ion-tab>-->
 
 
 </ion-tabs>

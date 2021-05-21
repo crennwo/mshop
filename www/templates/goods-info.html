@@ -1,5 +1,6 @@
 <!--<ion-view hide-nav-bar="true">-->
 <ion-view>
+
 	<ion-content>
 		<ion-slide-box on-slide-changed="slideHasChanged($index)"  show-pager="true">
 			<ion-slide>
@@ -14,19 +15,24 @@
 		</ion-slide-box>
 		<ion-list>
 			<ion-item>
-	          	<h2>{{goodsInfo.pname}}</h2>
-	        	<span style="font-size:20px;font-weight: bold;color:darkorange">{{goodsInfo.market_price}}元</span>
-	        	<span style="text-decoration: line-through">{{goodsInfo.shop_price}}元</span>
-				<a class="button button-clear icon ion-ios-cart-outline" style="float:right"></a>
+				<div style="float:left">
+		          	<h2>{{goodsInfo.pname}}</h2>
+		        	<span style="font-size:20px;font-weight: bold;color:darkorange">{{goodsInfo.market_price}}元</span>
+		        	<span style="text-decoration: line-through">{{goodsInfo.shop_price}}元</span>
+	        	</div>
+	        	<div style="float:right">
+        		<a class="button button-small">-</a><span>1</span><a class="button button-small	">+</a>
+				</div>
 			</ion-item>
 			<ion-item class="item-icon-right">
 				<h5>4斤装</h5>
 				<i class="icon ion-ios-checkmark-empty energized"></i>
 			</ion-item>
-			<ion-item class="item-icon-right" href="#/goods-detail/{{goodsInfo.pid}}">
+			<ion-item class="item-icon-right" href="#/onegoods/detail/{{goodsInfo.pid}}">
 				<h2>商品详情</h2>
 				<i class="icon ion-ios-arrow-right"></i>
 			</ion-item>
 		</ion-list>
 	</ion-content>
 </ion-view>
+</ion-nav-view>

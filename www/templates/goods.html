@@ -2,7 +2,7 @@
 <ion-content>
 <!--加一个tab-top，显示新品、热卖、价格-->
 	<ion-list>
-		<ion-item class="item-thumbnail-left" ng-repeat="one in goods" href="#/goods-info/{{one.pid}}">
+		<ion-item class="item-thumbnail-left" ng-repeat="one in goods" href="#/onegoods/info/{{one.pid}}">
 			<img class="full-image" ng-src="{{one.img}}" >
           	<h2>{{one.pname}}</h2>
           	<p>{{one.pdesc}}</p>

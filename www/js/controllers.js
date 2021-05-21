@@ -16,12 +16,15 @@ angular.module('starter.controllers', [])
 
 .controller('GoodsInfoCtrl', function($scope,$stateParams,GoodsInfo) {
 //	$ionicNavBarDelegate.showBar(true);
-	//console.log("enter");
+	console.log("enter GoodsInfoCtrl");
 	$scope.goodsInfo=GoodsInfo.get($stateParams.goodsId);
+	$scope.$on('$ionicView.beforeEnter',function(evt,enteringData){
+		enteringData.enableBack=true;
+	})
 })
 
 .controller('GoodsDetailCtrl', function($scope,$stateParams,GoodsDetail) {
-	console.log("enter");
+	console.log("enter GoodDetailCtrl");
 	$scope.goodsDetail=GoodsDetail.get($stateParams.goodsId);
 })
 
@@ -30,8 +33,13 @@ angular.module('starter.controllers', [])
 	
 })
 
-.controller('CartCtrl', function($scope) {
+.controller('SettingsCtrl', function($scope) {
 	
+})
+
+.controller('CartCtrl', function($scope,Cart) {
+	$scope.cart=Cart.all();
+	$scope.total=Cart.total();
 })
 
 

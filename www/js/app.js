@@ -70,16 +70,63 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-  .state('goods-info', {
-      url: '/goods-info/:goodsId',
-      templateUrl: 'templates/goods-info.html',
-      controller: 'GoodsInfoCtrl'
+
+//.state('goods-info', {
+//    url: '/goods-info/:goodsId',
+//    views:{
+//    	'goods-info':{
+//    		templateUrl: 'templates/goods-info.html',
+//    		controller: 'GoodsInfoCtrl'		
+//    	}
+//    }
+//  })
+//  
+//
+//
+
+  // setup an abstract state for the tabs directive
+    .state('onegoods', {
+    url: "/onegoods",
+    abstract: true,
+    templateUrl: "templates/onegoods.html"
+  })
+
+
+	.state('onegoods.info', {
+      url: '/info/:goodsId',
+      views: {
+        'onegoods': {
+          templateUrl: 'templates/goods-info.html',
+          controller: 'GoodsInfoCtrl'
+        }
+      }
+    })
+	
+   .state('onegoods.detail', {
+      url: '/detail/:goodsId',
+      views: {
+        'onegoods': {
+          templateUrl: 'templates/goods-detail.html',
+          controller: 'GoodsDetailCtrl'
+        }
+      }
     })
     
-  .state('goods-info.detail', {
-      url: '/goods-details/:goodsId',
+  .state('goods-info', {
+      url: '/goods-info/:goodsId',
+      views:{
+      	'onegoods':{
+      		templateUrl: 'templates/goods-info.html',
+      		controller: 'GoodsInfoCtrl'		
+      	}
+      }
+    })
+
+    
+  .state('goods-info-detail', {
+      url: '/goods-details',
       templateUrl: 'templates/goods-detail.html',
-      controller: 'GoodsDetailCtrl' 
+      controller: 'GoodsDetailCtrl'
   })
 
   .state('tab.me', {
@@ -88,6 +135,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       'tab-me': {
         templateUrl: 'templates/tab-me.html',
         controller: 'MeCtrl'
+      }
+    }
+  })
+
+  .state('tab.settings', {
+    url: '/settings',
+    views: {
+      'tab-me': {
+        templateUrl: 'templates/settings.html',
+        controller: 'SettingsCtrl'
       }
     }
   })
@@ -143,6 +200,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/categories');
+  $urlRouterProvider.otherwise('/tab/me');
 
 });
