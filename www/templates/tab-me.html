@@ -2,36 +2,82 @@
 	<ion-nav-buttons side="right">
 		<a class="button button-clear icon-right ion-ios-gear-outline" href="#/tab/settings"></a>
 	</ion-nav-buttons>
+	
   	<ion-content>
-		<div>
-			登录注册积分余额优惠券等等
+		<div id="upper" style="min-height:50%;height:50%;width:100%;background:url('img/top_bg.png')">
+		    <div id="user_login" style="margin:0 auto;width:125px;height:60%;">
+		        <div id="user_icon" style="margin:0 auto;width:80px;height:80px;border-radius:40px;background:rgba(153,204,51,0.6);border:1px solid rgba(255,255,255,0.6);text-align:center;font-size:18px;line-height:80px;color:rgba(255,255,255,0.7);">
+		              未登录
+		        </div>
+		        <div id="arrow" style="position:relative;top:-50px;left:110px;width:0px;height:0px;color:rgba(255,255,255,0.8);font-size:24px;"> >
+		        </div>
+		        <div id="login_tool_bar" style="height:42px;width:121px;border:1px solid rgba(255,255,255,0.6);border-radius:20px;background-color: transparent;margin-top:10px;">
+		            <ul style="list-style-type: none;display: inline-block;padding:7px 0px;margin:0px;width:120px;">
+		                <li style="display:inline-block;width:55px;height:30px;border-right:1px solid #fff;text-align: center;">
+		                    <a href="#" style="font-size:18px;line-height:30px;text-decoration: none;color:#fff;font-weight:
+		                    bold;">登录</a>
+		                </li>
+		                <li style="display:inline-block;width:55px;height:30px;text-align: center;">
+		                    <a href="#" style="font-size:18px;line-height:30px;text-decoration: none;color:#fff;font-weight:
+		                    bold;">注册</a>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		    <div id="upper_tool_bar" style="height:40%;width:100%;background-color:transparent;margin-top:20px;padding:10px 5px;">
+		        <ul style="list-style-type: none;display: block;padding:0px;margin:0px;width:100%;height:100%;-webkit-padding-start: 0px;">
+		            <li style="display:inline-block;width:30%;height:100%;border-right:1px solid #fff;text-align: center;">
+		                <a href="#" style="font-size:18px;text-decoration: none;color:#fff;font-weight:bold">积分</a>
+		            </li>
+		            <li style="display:inline-block;width:30%;height:100%;text-align: center;border-right:1px solid #fff;">
+		                <a href="#" style="font-size:18px;text-decoration: none;color:#fff;font-weight:bold">余额</a>
+		            </li>
+		            <li style="display:inline-block;width:30%;height:100%;text-align: center;">
+		                <a href="#" style="font-size:18px;text-decoration: none;color:#fff;font-weight:bold">优惠券</a>
+		            </li>
+		        </ul>
+		    </div>
 		</div>
+		
 		<div class="row">
-			<div class="col positive-bg light">
-				<div>我的订单</div>
-              <i class="icon ion-android-train"></i>
+			<div class="col">
+				<a href="#" style="text-align:center;color:#666666;font-size:16px;text-decoration:none;">
+					<img src="img/btn_a.png">
+                	<p style="position:relative;top:0px;left:0px;text-align:center;">我的订单</p>
+				</a>
 			</div>
-			<div class="col assertive-bg light">
-				<div>评论晒单</div>
-              <i class="icon ion-android-train"></i>
+			<div class="col">
+				<a href="#" style="text-align:center;color:#666666;font-size:16px;text-decoration:none;">
+					<img src="img/btn_b.png">
+	                <p style="position:relative;top:0px;left:0px;text-align:center;">待评价</p>
+	            </a>
 			</div>
-			<div class="col calm-bg light">
-				<div>我的关注</div>
-              <i class="icon ion-model-s"></i>
+			<div class="col">
+				<a href="#" style="text-align:center;color:#666666;font-size:16px;text-decoration:none;">
+					<img src="img/btn_c.png">
+                    <p style="position:relative;top:0px;left:0px;text-align:center;">我的关注</p>
+                </a>
 			</div>
 		</div>
+		
 		<div class="row">
-			<div class="col positive-bg light">
-				<div>我的赠品</div>
-              <i class="icon ion-android-train"></i>
+			<div class="col">
+				<a href="#" style="text-align:center;color:#666666;font-size:16px;text-decoration:none;">
+					<img src="img/btn_d.png">
+                    <p style="position:relative;top:0px;left:0px;text-align:center;">我的赠品</p>
+                </a>
 			</div>
-			<div class="col assertive-bg light">
-				<div>我的特权</div>
-              <i class="icon ion-android-train"></i>
+			<div class="col">
+				<a href="#" style="text-align:center;color:#666666;font-size:16px;text-decoration:none;">
+					<img src="img/btn_e.png">
+                   	<p style="position:relative;top:0px;left:0px;text-align:center;">我的特权</p>
+                </a>
 			</div>
-			<div class="col calm-bg light">
-				<div>我的试吃</div>
-              <i class="icon ion-model-s"></i>
+			<div class="col">
+				<a href="#" style="text-align:center;color:#666666;font-size:16px;text-decoration:none;">
+				 	<img src="img/btn_f.png">
+	                    <p style="position:relative;top:0px;left:0px;text-align:center;">我的试吃</p>
+	            </a>
 			</div>
 		</div>
   	</ion-content>
