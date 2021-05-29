@@ -2,18 +2,18 @@
 	<ion-nav-buttons side="right">
 		<button class="button button-clear icon-left ion-ios-search"></button>
 	</ion-nav-buttons>
- 	<ion-content>
+ 	<ion-content class="has-footer">
 		<ion-list>
 			<ion-item class="item-divier item-stable">购买商品</ion-item>
 			<ion-item class="item-thumbnail-left" ng-repeat="goods in cart" href="#">
-			<img class="full-image" ng-src="{{goods.img}}" >
-          	<h2>{{goods.pname}}</h2>
-          	<p>{{goods.pdesc}}</p>
-        	<span style="font-size:20px;font-weight: bold;color:darkorange">{{goods.market_price}}元</span>
-        	<div>
-        		<a class="button button-small">-</a><span>1</span><a class="button button-small	">+</a>
-			</div>
-		</ion-item>
+				<img class="full-image" ng-src="{{goods.img}}" >
+	          	<h2>{{goods.pname}}</h2>
+	          	<p>{{goods.pdesc}}</p>
+	        	<span style="font-size:20px;font-weight: bold;color:darkorange">{{goods.market_price}}元</span>
+	        	<div>
+	        		<a class="button button-small">-</a><span>1</span><a class="button button-small	">+</a>
+				</div>
+			</ion-item>
 		</ion-list>
  	</ion-content>
  	<ion-footer-bar class="bar-subfooter">

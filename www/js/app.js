@@ -60,17 +60,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.goods', {
-      url: '/goods/:categoryId/:categoryName',
+  .state('tab.goodstabs', {
+      url: '/goodstabs',
       views: {
-       'tab-categories': {
-          templateUrl: 'templates/goods.html',
-          controller: 'GoodsCtrl'
-        }
+      'tab-categories': {
+      templateUrl: 'templates/goods-tabs.html',
+      controller: 'GoodsTabsCtrl'
       }
+    }
     })
 
-
+  .state('tab.goodstabs.goodslist', {
+      url: '/goodslist',
+      views: {
+      'goodslist': {
+        templateUrl: 'templates/goods-list.html',
+        controller: 'GoodsListCtrl'
+      	}
+      }
+    })
 //.state('goods-info', {
 //    url: '/goods-info/:goodsId',
 //    views:{
@@ -200,6 +208,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/me');
+  $urlRouterProvider.otherwise('/tab/index');
 
 });

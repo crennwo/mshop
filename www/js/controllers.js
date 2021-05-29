@@ -8,11 +8,30 @@ angular.module('starter.controllers', [])
 	$scope.categories=Categories.all();
 })
 
-.controller('GoodsCtrl', function($scope,$stateParams,Goods) {
+.controller('GoodsTabsCtrl', function($scope, $ionicSlideBoxDelegate) {
+  //设置selectedTab,tab绑定ng-class="{'active':selectedTab == 0}"用来设置tab的激活属性
+  $scope.selectedTab = 0;
+	//切换tab,设置selectTab,改变tab激活属性,同时切换slideBox
+  $scope.selectTabWithIndex = function(index) {
+    $scope.selectedTab = index; 
+	$ionicSlideBoxDelegate.slide($scope.selectedTab);
+  }
+	//切换slide,设置selectTab,改变tab激活属性
+  $scope.slideHasChanged = function(index) {
+	$scope.selectedTab = index; 
+	//$scope.selectTabWithIndex(index);
+  };
+})
+
+.controller('GoodsListCtrl', function($scope,$stateParams,Goods) {
+	console.log("enter GoodsListCtrl");
 	//$scope.goods=Goods.get($stateParams.categoryId);
 	$scope.goods=Goods.all();
-	$scope.categoryName=$stateParams.categoryName;
+	//$scope.categoryName=$stateParams.categoryName;
 })
+
+
+
 
 .controller('GoodsInfoCtrl', function($scope,$stateParams,GoodsInfo) {
 //	$ionicNavBarDelegate.showBar(true);
