@@ -5,9 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','LocalStorageModule'])
 
-.run(function($ionicPlatform) {
+.constant("SERVER_BASE_URL", "http://localhost:8080/shop/")
+
+.run(function($ionicPlatform,Session,localStorageService,AuthService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,10 +20,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+    
   });
+  	var loginInfo =localStorageService.get("loginInfo");
+	var isUndefined=angular.isUndefined(loginInfo);//localStorage中currentUser是否已定义
+	if(!isUndefined && loginInfo!=null){	 
+		AuthService.login(loginInfo).then(function(result){
+			if(result.result==1){
+			 	Session.create(result);
+			 	console.log("localStorage自动登录："+result);
+		 	}
+		});
+	}
 })
 
-.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,localStorageServiceProvider) {
+	//本地缓存
+	localStorageServiceProvider
+    .setPrefix('starter')
+    .setStorageType('localStorage') //sessionStorage本地关闭后清除
+    .setNotify(true, true)
+    .setStorageCookie(30, '/');//天数/目录
+    
   // show tab at bottom
 	$ionicConfigProvider.platform.android.tabs.position("bottom");
 	$ionicConfigProvider.tabs.style('standard');	

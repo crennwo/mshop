@@ -48,7 +48,36 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('MeCtrl', function($scope) {
+.controller('MeCtrl', function($scope,AuthService,Session) {
+	$scope.regData={name:'eason',password:'123',email:'eason@shop.com'};
+	$scope.register=function(){
+		$scope.user=AuthService.register($scope.regData);
+		$scope.user.then(function(result){
+			console.log(angular.fromJson(result));
+			if(result.status=="1"){
+				//注册成功
+				//提示： eason，您好，请登录邮箱261901051@qq.com邮箱激活你的帐号
+			}
+		});
+	}
+	
+	$scope.loginInfo={name:'eason',password:'123'};
+	$scope.login=function(){
+		AuthService.login($scope.loginInfo).then(function(result){
+			//result为登录后返回的用户信息
+			console.log(angular.fromJson(result));
+			if(result.result==1){
+				//登录成功
+				Session.create(result.obj);//记录用户信息在Session.currentUser中
+				Session.remember($scope.loginInfo);//保存用户名密码
+			}
+		});
+	}
+	
+	$scope.logout=function(){
+		Session.destroy();//注销
+		//刷新 "我的果园"去掉所有登录信息
+	}
 	
 })
 

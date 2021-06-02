@@ -1,4 +1,43 @@
-angular.module('starter.services', [])
+angular.module('starter.services', ['ngResource'])
+
+.factory('AuthService', ['$resource','SERVER_BASE_URL',function ($resource,SERVER_BASE_URL) {
+	return {
+		register: function(regData){	
+			var res=$resource(SERVER_BASE_URL+"muser_regist");
+			var result=res.save({username:regData.name,password:regData.password,email:regData.email},{
+				//这里写json
+			});
+	        return result.$promise;
+		},
+		login: function(loginInfo){
+			//传值可以把参数写在get()、save()等方法内，或者直接写在url中 
+			//var res=User.get();get方式传值
+			var res=$resource(SERVER_BASE_URL+"muser_login");
+			//post方式传值
+			var result=res.save({username:loginInfo.name,password:loginInfo.password},{
+				//这里写json
+			});
+	        return result.$promise;
+		}
+	};
+}])
+
+.service('Session', function(localStorageService){
+      this.create = function(user){
+        this.currentUser = user;  
+       	console.log("Session.currentUser is created");
+      };
+      this.destroy = function(){
+    	  this.currentUser = null;
+    	  localStorageService.remove("loginInfo");
+    	  console.log("localStorage is removed");
+      };
+      this.remember=function(loginInfo){
+      	localStorageService.set("loginInfo",loginInfo);
+        console.log("localStorage is saved:"+loginInfo);	
+      }
+     return this;
+})
 
 .factory('Categories', function() {
   // Might use a resource here that returns a JSON array
