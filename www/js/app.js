@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','LocalStorageModule'])
 
-.constant("SERVER_BASE_URL", "http://localhost:8080/shop/")
+.constant("SERVER_BASE_URL", "http://localhost:8080/fresh365/")
 
 .run(function($ionicPlatform,Session,localStorageService,AuthService) {
   $ionicPlatform.ready(function() {
@@ -91,7 +91,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','L
     })
 
   .state('tab.goodstabs.goodslist', {
-      url: '/goodslist',
+      url: '/goodslist/:csid',
       views: {
       'goodslist': {
         templateUrl: 'templates/goods-list.html',
@@ -99,18 +99,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','L
       	}
       }
     })
-//.state('goods-info', {
-//    url: '/goods-info/:goodsId',
-//    views:{
-//    	'goods-info':{
-//    		templateUrl: 'templates/goods-info.html',
-//    		controller: 'GoodsInfoCtrl'		
-//    	}
-//    }
-//  })
-//  
-//
-//
 
   // setup an abstract state for the tabs directive
     .state('onegoods', {

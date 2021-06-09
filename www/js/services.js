@@ -1,12 +1,11 @@
 angular.module('starter.services', ['ngResource'])
 
+//权限服务：注册 登录
 .factory('AuthService', ['$resource','SERVER_BASE_URL',function ($resource,SERVER_BASE_URL) {
 	return {
 		register: function(regData){	
 			var res=$resource(SERVER_BASE_URL+"muser_regist");
-			var result=res.save({username:regData.name,password:regData.password,email:regData.email},{
-				//这里写json
-			});
+			var result=res.save({username:regData.name,password:regData.password,email:regData.email},{/*这写Json*/});
 	        return result.$promise;
 		},
 		login: function(loginInfo){
@@ -14,14 +13,13 @@ angular.module('starter.services', ['ngResource'])
 			//var res=User.get();get方式传值
 			var res=$resource(SERVER_BASE_URL+"muser_login");
 			//post方式传值
-			var result=res.save({username:loginInfo.name,password:loginInfo.password},{
-				//这里写json
-			});
+			var result=res.save({username:loginInfo.name,password:loginInfo.password},{/*这写Json*/});
 	        return result.$promise;
 		}
 	};
 }])
 
+//Session：保存登录用户信息
 .service('Session', function(localStorageService){
       this.create = function(user){
         this.currentUser = user;  
@@ -38,6 +36,37 @@ angular.module('starter.services', ['ngResource'])
       }
      return this;
 })
+
+//商品服务 推荐 热门  二级目录 产品列表 产品详情 
+.factory('ProductService', ['$resource','SERVER_BASE_URL',function ($resource,SERVER_BASE_URL) {
+	return {
+		//查询推荐商品
+		findRec:function(){
+			var res=$resource(SERVER_BASE_URL+"mproduct_findRec");
+			var result=res.get();
+	        return result.$promise;
+		},
+		//查询热门商品
+		findHot:function(){
+			var res=$resource(SERVER_BASE_URL+"mproduct_findHot");
+			var result=res.get();
+	        return result.$promise;
+		},
+		//查询二级目录
+		findCategories:function(){
+			var res=$resource(SERVER_BASE_URL+"mproduct_findAllCs");
+			var result=res.get();
+	        return result.$promise;
+		},
+		//根据csid查询商品列表
+		findByCsid:function(csid,page){
+			var res=$resource(SERVER_BASE_URL+"mproduct_findByCsid");
+			var result=res.get({csid:csid,page:page},{/*这写Json*/});
+	        return result.$promise;
+		}
+	};
+}])
+
 
 .factory('Categories', function() {
   // Might use a resource here that returns a JSON array

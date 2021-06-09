@@ -15,19 +15,16 @@
 		</div>
 	</ion-nav-title>
 	<ion-content>
-	  <ion-slide-box does-continue="true" auto-play="true" show-pager="true" on-slide-changed="slideHasChanged($index)" style="height:170px">
-	  <ion-slide>
-	  	<img class="full-image" src="img/slide1.jpeg">
-	  </ion-slide>
-	  <ion-slide>
-	  <img class="full-image" src="img/slide2.jpeg">
-	  </ion-slide>
-	  <ion-slide>
-	  <img class="full-image" src="img/slide3.jpeg">
-	  </ion-slide>
-	</ion-slide-box>
+		<ion-slide-box does-continue="true" auto-play="true" show-pager="true" on-slide-changed="slideHasChanged($index)" style="height:170px">
+			<ion-slide ng-repeat="rec in recList">
+		  		<a ng-href="#/onegoods/info/{{rec.pid}}">
+		  			<img class="full-image" ng-src="{{rec.rec_img}}">
+		  		</a>
+		  	</ion-slide>
+		</ion-slide-box>
 	
 	<div style="padding:0 30px;margin:3px;font-size:8px;border:2px solid #28A54C">
+		<!--这里应该用一张图片来代替-->
 		<h5 style="text-align:center;font-weight:bold;color:#28A54C">果园君公告:会员等级全面升级</h5>
 			<hr />
 			<p><span style="color:#28A54C">亲爱滴果友:</span><br />
@@ -39,30 +36,12 @@
 	</div>
 			
 	<ion-list class="list-borderless">
-    	<!--<ion-item class="list card" ng-repeat="hotItem in hotItems" href="#/tab/hotItem/{{hotItem.id}}">
-		    	<img class="full-image" ng-src="{{hotItem.icon}}">
-		</ion-item>-->
-		<ion-item style="padding:0px;margin:2px">
-			
-		</ion-item>
-		
-		<ion-item  style="padding:0px">
-			<img class="full-image" src="img/hot1.jpeg">
-		</ion-item>
-		<ion-item  style="padding:0px">
-			<img class="full-image" src="img/hot2.jpeg">
-		</ion-item>
-		<ion-item  style="padding:0px">
-			<img class="full-image" src="img/hot3.jpeg">
-		</ion-item>
-		<ion-item  style="padding:0px">
-			<img class="full-image" src="img/hot4.jpeg">
-		</ion-item>
-		<ion-item  style="padding:0px">
-			<img class="full-image" src="img/hot5.jpeg">
+    	<ion-item style="padding:0px" ng-repeat="hot in hotList">
+		    <a ng-href="#/onegoods/info/{hot.pid}}">
+		    	<img class="full-image" ng-src="{{hot.hot_img}}">
+		   	</a>
 		</ion-item>
 	</ion-list>
-	
 	
 </ion-content>
 </ion-view>

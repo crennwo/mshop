@@ -1,35 +1,17 @@
-<!--<ion-view view-title="Dashboard">
-    <ion-content has-header="true" class="has-tabs-top">
-        <ion-slide-box show-pager='false' on-slide-changed="slideChanged(index)">
-
-            <ion-slide>
-            123
-            </ion-slide>
-
-            <ion-slide>
-            456
-            </ion-slide>
-
-            <ion-slide>
-            789
-            </ion-slide>
-        </ion-slide-box>
-
-    </ion-content>
-</ion-view>-->
-
 <ion-view view-title="商品">
     <ion-content has-header="true" class="has-tabs-top">
     	<ion-slide-box id="box" show-pager='false' on-slide-changed="slideHasChanged($index)">
 			<ion-slide>
+				<!--<ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()">
+				</ion-refresher>-->
 				我是新品
 				<ion-list>
-					<ion-item class="item-thumbnail-left" ng-repeat="one in goods" href="#/onegoods/info/{{one.pid}}">
-						<img class="full-image" ng-src="{{one.img}}" >
-			          	<h2>{{one.pname}}</h2>
-			          	<p>{{one.pdesc}}</p>
-			        	<span style="font-size:20px;font-weight: bold;color:darkorange">{{one.market_price}}元</span>
-			        	<span style="text-decoration: line-through">{{one.shop_price}}元</span>
+					<ion-item class="item-thumbnail-left" ng-repeat="product in productList" href="#/onegoods/info/{{product.pid}}">
+						<img class="full-image" ng-src="{{product.thumbnail}}" >
+			          	<h2>{{product.pname}}</h2>
+			          	<p>{{product.pdesc}}</p>
+			        	<span style="font-size:20px;font-weight: bold;color:darkorange">{{product.market_price}}元</span>
+			        	<span style="text-decoration: line-through">{{product.shop_price}}元</span>
 						<a class="button button-clear icon ion-ios-cart-outline" style="float:right"></a>
 					</ion-item>
 				</ion-list>
@@ -37,12 +19,12 @@
 			<ion-slide>
 				我是热销商品
 				<ion-list>
-					<ion-item class="item-thumbnail-left" ng-repeat="one in goods" href="#/onegoods/info/{{one.pid}}">
-						<img class="full-image" ng-src="{{one.img}}" >
-			          	<h2>{{one.pname}}</h2>
-			          	<p>{{one.pdesc}}</p>
-			        	<span style="font-size:20px;font-weight: bold;color:darkorange">{{one.market_price}}元</span>
-			        	<span style="text-decoration: line-through">{{one.shop_price}}元</span>
+					<ion-item class="item-thumbnail-left" ng-repeat="product in productList" href="#/onegoods/info/{{product.pid}}">
+						<img class="full-image" ng-src="{{product.thumbnail}}" >
+			          	<h2>{{product.pname}}</h2>
+			          	<p>{{product.pdesc}}</p>
+			        	<span style="font-size:20px;font-weight: bold;color:darkorange">{{product.market_price}}元</span>
+			        	<span style="text-decoration: line-through">{{product.shop_price}}元</span>
 						<a class="button button-clear icon ion-ios-cart-outline" style="float:right"></a>
 					</ion-item>
 				</ion-list>
@@ -50,16 +32,18 @@
 			<ion-slide>
 				我是价格
 				<ion-list>
-					<ion-item class="item-thumbnail-left" ng-repeat="one in goods" href="#/onegoods/info/{{one.pid}}">
-						<img class="full-image" ng-src="{{one.img}}" >
-			          	<h2>{{one.pname}}</h2>
-			          	<p>{{one.pdesc}}</p>
-			        	<span style="font-size:20px;font-weight: bold;color:darkorange">{{one.market_price}}元</span>
-			        	<span style="text-decoration: line-through">{{one.shop_price}}元</span>
+					<ion-item class="item-thumbnail-left" ng-repeat="product in productList" href="#/onegoods/info/{{product.pid}}">
+						<img class="full-image" ng-src="{{product.thumbnail}}" >
+			          	<h2>{{product.pname}}</h2>
+			          	<p>{{product.pdesc}}</p>
+			        	<span style="font-size:20px;font-weight: bold;color:darkorange">{{product.market_price}}元</span>
+			        	<span style="text-decoration: line-through">{{product.shop_price}}元</span>
 						<a class="button button-clear icon ion-ios-cart-outline" style="float:right"></a>
 					</ion-item>
 				</ion-list>
 			</ion-slide>
 		</ion-slide-box>
+		<ion-infinite-scroll ng-if="moreDataCanBeLoaded()" icon="ion-loading-c" on-infinite="loadMore()">
+		</ion-infinite-scroll>
     </ion-content>
 </ion-view>

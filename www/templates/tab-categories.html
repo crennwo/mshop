@@ -6,7 +6,7 @@
 		<ion-list>
 			<!--<ion-item class="item-divier">热门品类</ion-item>-->
 			<ion-item class="item-divier item-stable">全部品类</ion-item><!--href="#/tab/goods/{{category.csid}}/{{category.csname}}"-->
-			<ion-item class="item-icon-left item-icon-right" ng-repeat="category in categories" type="item-text-wrap" href="#/tab/goodstabs/goodslist">
+			<ion-item class="item-icon-left item-icon-right" ng-repeat="category in categories" type="item-text-wrap" href="#/tab/goodstabs/goodslist/{{category.csid}}">
 				<i class="icon ion-social-apple"></i>
 				<h2>{{category.csname}}</h2>
 				<p>{{category.desc}}</p>
