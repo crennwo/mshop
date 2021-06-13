@@ -1,24 +1,26 @@
 <!--<ion-view hide-nav-bar="true">-->
 <ion-view>
-
 	<ion-content>
 		<ion-slide-box on-slide-changed="slideHasChanged($index)"  show-pager="true">
+			<!--<ion-slide ng-repeat="img in product.imgs">
+		  		<img class="full-image" ng-src="{{img}}">
+		  	</ion-slide>-->
 			<ion-slide>
-		  		<img class="full-image" src="img/detail1.jpeg">
+		  		<img class="full-image" ng-src="{{product.imgs[0]}}">
 		  	</ion-slide>
 		  	<ion-slide>
-		 		<img class="full-image" src="img/detail2.jpeg">
+		 		<img class="full-image" ng-src="{{product.imgs[1]}}">
 		  	</ion-slide>
 		  	<ion-slide>
-		  		<img class="full-image" src="img/detail3.jpeg">
+		  		<img class="full-image" ng-src="{{product.imgs[2]}}">
 		  	</ion-slide>
 		</ion-slide-box>
 		<ion-list>
 			<ion-item>
 				<div style="float:left">
-		          	<h2>{{goodsInfo.pname}}</h2>
-		        	<span style="font-size:20px;font-weight: bold;color:darkorange">{{goodsInfo.market_price}}元</span>
-		        	<span style="text-decoration: line-through">{{goodsInfo.shop_price}}元</span>
+		          	<h2>{{product.pname}}</h2>
+		        	<span style="font-size:20px;font-weight: bold;color:darkorange">{{product.market_price}}元</span>
+		        	<span style="text-decoration: line-through">{{product.shop_price}}元</span>
 	        	</div>
 	        	<div style="float:right">
         		<a class="button button-small">-</a><span>1</span><a class="button button-small	">+</a>

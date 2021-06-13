@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','LocalStorageModule'])
 
-.constant("SERVER_BASE_URL", "http://localhost:8080/fresh365/")
+.constant("SERVER_BASE_URL", "http://192.168.191.1:8080/fresh365/")
 
 .run(function($ionicPlatform,Session,localStorageService,AuthService) {
   $ionicPlatform.ready(function() {
@@ -109,7 +109,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','L
 
 
 	.state('onegoods.info', {
-      url: '/info/:goodsId',
+      url: '/info/:pid',
       views: {
         'onegoods': {
           templateUrl: 'templates/goods-info.html',
@@ -119,7 +119,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','L
     })
 	
    .state('onegoods.detail', {
-      url: '/detail/:goodsId',
+      url: '/detail/:pid',
       views: {
         'onegoods': {
           templateUrl: 'templates/goods-detail.html',
@@ -128,22 +128,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','L
       }
     })
     
-  .state('goods-info', {
-      url: '/goods-info/:goodsId',
-      views:{
-      	'onegoods':{
-      		templateUrl: 'templates/goods-info.html',
-      		controller: 'GoodsInfoCtrl'		
-      	}
-      }
-    })
-
-    
-  .state('goods-info-detail', {
-      url: '/goods-details',
-      templateUrl: 'templates/goods-detail.html',
-      controller: 'GoodsDetailCtrl'
-  })
+//.state('goods-info', {
+//    url: '/goods-info/:pid',
+//    views:{
+//    	'onegoods':{
+//    		templateUrl: 'templates/goods-info.html',
+//    		controller: 'GoodsInfoCtrl'		
+//    	}
+//    }
+//  })
+//
+//  
+//.state('goods-info-detail', {
+//    url: '/goods-details',
+//    templateUrl: 'templates/goods-detail.html',
+//    controller: 'GoodsDetailCtrl'
+//})
 
   .state('tab.me', {
     url: '/me',

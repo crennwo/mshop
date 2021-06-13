@@ -59,9 +59,33 @@ angular.module('starter.services', ['ngResource'])
 	        return result.$promise;
 		},
 		//根据csid查询商品列表
-		findByCsid:function(csid,page){
-			var res=$resource(SERVER_BASE_URL+"mproduct_findByCsid");
-			var result=res.get({csid:csid,page:page},{/*这写Json*/});
+		findByCsid:function(csid,page,index){
+			var order="";
+			switch(index){
+				//新品
+				case 0:
+					order="modified desc";
+				 	break;
+				//热销
+				case 1:
+				 	order="modified desc";
+				 	break;
+				//价格
+				case 2:
+					order="shop_price asc";
+				 	break;
+			}
+			console.log(order);
+
+			var res=$resource(SERVER_BASE_URL+"mproduct_findByCsid?csid="+csid+"&page="+page+"&order="+order);
+			//var result=res.get({csid:csid,page:page,order:order},{/*这写Json*/});
+	        var result=res.get();
+	        return result.$promise;
+		},
+		//根据pid查询商品信息
+		findByPid:function(pid){
+			var res=$resource(SERVER_BASE_URL+"mproduct_findByPid");
+			var result=res.get({pid:pid},{/*这写Json*/});
 	        return result.$promise;
 		}
 	};

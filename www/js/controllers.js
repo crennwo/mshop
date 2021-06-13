@@ -27,55 +27,66 @@ angular.module('starter.controllers', [])
 })
 
 .controller('GoodsTabsCtrl', function($scope, $ionicSlideBoxDelegate) {
-  //设置selectedTab,tab绑定ng-class="{'active':selectedTab == 0}"用来设置tab的激活属性
-  $scope.selectedTab = 0;
+	//设置selectedTab,tab绑定ng-class="{'active':selectedTab == 0}"用来设置tab的激活属性
+	$scope.selectedTab = 0;
 	//切换tab,设置selectTab,改变tab激活属性,同时切换slideBox
-  $scope.selectTabWithIndex = function(index) {
-    $scope.selectedTab = index; 
-	$ionicSlideBoxDelegate.slide($scope.selectedTab);
-  }
-	//切换slide,设置selectTab,改变tab激活属性
-  $scope.slideHasChanged = function(index) {
-	$scope.selectedTab = index; 
-  };
+ 	$scope.selectTabWithIndex = function(index) {
+    	$scope.selectedTab = index; 
+		$ionicSlideBoxDelegate.slide($scope.selectedTab);
+  	}
+ 	//slideHasChanged后，子控制器把 index 冒泡到父控制器
+ 	$scope.$on('slideIndexChanged', function(event,data) {
+ 		//切换slide,设置selectTab,改变tab激活属性
+    	$scope.selectedTab = data; 
+   	});
 })
 
-.controller('GoodsListCtrl', function($scope,$stateParams,ProductService) {
-	//初始化商品列表
-	$scope.productList=[];
-	//初始化当前页码数为1
-	$scope.page=1;
+.controller('GoodsListCtrl', function($scope,$timeout,$ionicScrollDelegate,$ionicSlideBoxDelegate,$stateParams,ProductService) {
 	//获得csid
 	$scope.csid=$stateParams.csid;
-	//首次刷新
-//	ProductService.findByCsid($scope.csid,$scope.page).then(function(result){
-//		//获得总页码数
-//		$scope.pageCount=result.obj.totalPage;
-//		$scope.productList=result.obj.list;
-//		console.log("首次刷新成功");
-//	})
-	
-	//上拉刷新
-	$scope.loadMore=function(){
-		if($scope.page<$scope.pageCount)//当前页小于总页码数时，页数加1
-			$scope.page++;
-		console.log($scope.page);
-		ProductService.findByCsid($scope.csid,$scope.page).then(function(result){
-			//获得总页码数
-			$scope.pageCount=result.obj.totalPage;
-			//当前数组拼接新数组
-			$scope.productList=$scope.productList.concat(result.obj.list);
-			//加载完更多内容后广播
-			$scope.$broadcast('scroll.infiniteScrollComplete');
-			
-			console.log($scope.productList);
-		})	
+	//首次加载,监听stateChange来判断
+	$scope.$on('$stateChangeSuccess', function() {
+    	$scope.init();
+   	});
+	//初始化函数
+	$scope.init=function(){
+		//初始化商品列表
+		$scope.productList=[];
+		//初始化当前页码数为1
+		$scope.page=0;	
+		//首次拉取数据
+		$scope.loadMore();
+		//ion-content滚动到顶部
+		$ionicScrollDelegate.scrollTop();
 	}
 	
-	$scope.$on('$stateChangeSuccess', function() {
-    	$scope.loadMore();
-	});
-  	
+	//切换新品、热卖、价格：1、清空商品列表 2、初始化页码   根据index对应的属性product排序
+	//切换slidebox,重新加载商品列表,向父级冒泡改变后的index值
+	$scope.slideHasChanged = function(index) {
+ 		$scope.$emit('slideIndexChanged', index);
+ 		$scope.init();
+  	}
+
+	//上拉加载更多
+	$scope.loadMore=function(){
+		$timeout(function(){
+			//每次加载更多，页码加1
+			$scope.page++;
+			//console.log($scope.page);
+			ProductService.findByCsid($scope.csid,$scope.page,$ionicSlideBoxDelegate.currentIndex()).then(function(result){
+				//获得总页码数
+				$scope.pageCount=result.obj.totalPage;
+				//当前数组拼接新数组
+				$scope.productList=$scope.productList.concat(result.obj.list);
+				//加载完更多内容后广播
+				$scope.$broadcast('scroll.infiniteScrollComplete');
+				//console.log($scope.productList);
+			})	
+		},500);
+			
+	}
+	
+	//上拉加载超过总页码数则返回false,不允许再加载
 	$scope.moreDataCanBeLoaded=function(){
 		if($scope.page<$scope.pageCount)
 			return true;
@@ -84,13 +95,20 @@ angular.module('starter.controllers', [])
 	}
 })
 
-.controller('GoodsInfoCtrl', function($scope,$stateParams,GoodsInfo) {
-//	$ionicNavBarDelegate.showBar(true);
-	console.log("enter GoodsInfoCtrl");
-	$scope.goodsInfo=GoodsInfo.get($stateParams.goodsId);
-	$scope.$on('$ionicView.beforeEnter',function(evt,enteringData){
-		enteringData.enableBack=true;
-	})
+.controller('GoodsInfoCtrl', function($scope,$stateParams,ProductService) {
+	console.log("pid："+$stateParams.pid);
+	$scope.product={};
+	ProductService.findByPid($stateParams.pid).then(function(result){
+		$scope.product=result.obj;
+		console.log($scope.product);
+	});
+
+
+//	console.log("enter GoodsInfoCtrl");
+//	$scope.goodsInfo=GoodsInfo.get($stateParams.goodsId);
+//	$scope.$on('$ionicView.beforeEnter',function(evt,enteringData){
+//		enteringData.enableBack=true;
+//	})
 })
 
 .controller('GoodsDetailCtrl', function($scope,$stateParams,GoodsDetail) {
