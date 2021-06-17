@@ -96,24 +96,30 @@ angular.module('starter.controllers', [])
 })
 
 .controller('GoodsInfoCtrl', function($scope,$stateParams,ProductService) {
-	console.log("pid："+$stateParams.pid);
+	$scope.quantity=1;
 	$scope.product={};
 	ProductService.findByPid($stateParams.pid).then(function(result){
 		$scope.product=result.obj;
 		console.log($scope.product);
 	});
-
-
-//	console.log("enter GoodsInfoCtrl");
-//	$scope.goodsInfo=GoodsInfo.get($stateParams.goodsId);
-//	$scope.$on('$ionicView.beforeEnter',function(evt,enteringData){
-//		enteringData.enableBack=true;
-//	})
+	$scope.$on('$ionicView.beforeEnter',function(evt,enteringData){
+		enteringData.enableBack=true;
+	})
+	$scope.decrement = function() {
+  		if($scope.quantity<=1)
+  			return;
+  		$scope.quantity--;
+  	}
+	$scope.increment = function() {
+ 		$scope.quantity++;
+	}
 })
 
-.controller('GoodsDetailCtrl', function($scope,$stateParams,GoodsDetail) {
-	console.log("enter GoodDetailCtrl");
-	$scope.goodsDetail=GoodsDetail.get($stateParams.goodsId);
+.controller('GoodsDetailCtrl', function($scope,$stateParams,ProductService) {
+	ProductService.findByPid($stateParams.pid).then(function(result){
+		$scope.pdescimgs=result.obj.pdescimgs;
+		console.log($scope.pdescimgs);
+	});
 })
 
 
@@ -146,9 +152,52 @@ angular.module('starter.controllers', [])
 	$scope.logout=function(){
 		Session.destroy();//注销
 		//刷新 "我的果园"去掉所有登录信息
+	}	
+})
+
+.controller('RegistCtrl', function($scope,$state,$ionicPopup,AuthService,$ionicHistory) {
+	$scope.user={name:"",email:"",password:"",confirmPwd:""};
+	$scope.message="";
+	$scope.regist=function(){
+		if($scope.user.password!=$scope.user.confirmPwd)//如果两次密码输入不一致,提示并返回
+		{
+			$scope.message="两次输入密码不一致！";
+			$scope.showPopup();
+			return;
+		}
+		AuthService.register($scope.user).then(function(result){
+			console.log(result);
+			if(result.result==0)
+			{
+				$scope.message=result.desc;
+				$scope.showPopup();
+				return;
+			}
+			$scope.message="注册成功，请登录邮箱激激活账号后再登录！";
+			$scope.showPopup();
+			$ionicHistory.goBack();
+		});
 	}
 	
+	// 显示定制弹出框，提示错误消息
+	$scope.showPopup = function() {
+		// 调用$ionicPopup弹出定制弹出框
+		$ionicPopup.show({
+			template: $scope.message,
+			title: "提示",
+			buttons: [
+				{
+					text: "确认",
+					type: "button-balanced"
+				}
+			]
+		})
+	};
+
 })
+
+
+
 
 .controller('SettingsCtrl', function($scope) {
 	

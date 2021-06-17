@@ -3,7 +3,8 @@ angular.module('starter.services', ['ngResource'])
 //权限服务：注册 登录
 .factory('AuthService', ['$resource','SERVER_BASE_URL',function ($resource,SERVER_BASE_URL) {
 	return {
-		register: function(regData){	
+		register: function(regData){
+			console.log("regData:"+regData.name);
 			var res=$resource(SERVER_BASE_URL+"muser_regist");
 			var result=res.save({username:regData.name,password:regData.password,email:regData.email},{/*这写Json*/});
 	        return result.$promise;

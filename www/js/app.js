@@ -155,6 +155,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','L
     }
   })
 
+  .state('tab.regist', {
+    url: '/regist',
+    views: {
+      'tab-me': {
+        templateUrl: 'templates/regist.html',
+        controller: 'RegistCtrl'
+      }
+    }
+  })
   .state('tab.settings', {
     url: '/settings',
     views: {

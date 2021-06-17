@@ -1,5 +1,5 @@
 <!--<ion-view hide-nav-bar="true">-->
-<ion-view>
+<ion-view view-title="{{product.pname}}">
 	<ion-content>
 		<ion-slide-box on-slide-changed="slideHasChanged($index)"  show-pager="true">
 			<!--<ion-slide ng-repeat="img in product.imgs">
@@ -23,18 +23,19 @@
 		        	<span style="text-decoration: line-through">{{product.shop_price}}元</span>
 	        	</div>
 	        	<div style="float:right">
-        		<a class="button button-small">-</a><span>1</span><a class="button button-small	">+</a>
+        		<a class="button button-small" ng-click="decrement()">-</a>
+        		<span>{{quantity}}</span>
+        		<a class="button button-small" ng-click="increment()">+</a>
 				</div>
 			</ion-item>
 			<ion-item class="item-icon-right">
-				<h5>4斤装</h5>
+				<h5>{{product.standard}}</h5>
 				<i class="icon ion-ios-checkmark-empty energized"></i>
 			</ion-item>
-			<ion-item class="item-icon-right" href="#/onegoods/detail/{{goodsInfo.pid}}">
+			<ion-item class="item-icon-right" href="#/onegoods/detail/{{product.pid}}">
 				<h2>商品详情</h2>
 				<i class="icon ion-ios-arrow-right"></i>
 			</ion-item>
 		</ion-list>
 	</ion-content>
 </ion-view>
-</ion-nav-view>

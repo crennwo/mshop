@@ -1,0 +1,25 @@
+<ion-view view-title="登录果园账户">
+	<ion-content>
+		<ion-list type="list-inset">
+			<label class="item item-input">
+				<i class="icon ion-ios-person-outline positive"></i>
+				<input type="text" ng-model="user.name" placeholder="请输入您的账号">
+			</label>
+			<label class="item item-input">
+				<i class="icon ion-ios-email-outline positive"></i>
+				<input type="text" ng-model="user.email" placeholder="请输入您的邮箱">
+			</label>
+			<label class="item item-input">
+				<i class="icon ion-ios-unlocked-outline positive"></i>
+				<input type="password" ng-model="user.password" placeholder="设置密码">
+			</label>
+			<label class="item item-input">
+				<i class="icon ion-ios-unlocked-outline positive"></i>
+				<input type="password" ng-model="user.confirmPwd" placeholder="确认密码">
+			</label>
+		</ion-list>
+		<div class="padding-left padding-right">
+			<button class="button button-block button-balanced" ng-click="regist()">注册</button>
+		</div>
+	</ion-content>
+</ion-view>

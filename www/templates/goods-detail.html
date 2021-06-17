@@ -1,9 +1,8 @@
-<ion-view>
+<ion-view view-title="商品详情">
 	<ion-content>
 		<ion-list>
-			<ion-item>
-				<h2>{{goodsDetail.pname}}</h2>
-				<h2>我是商品详情，这里放一张超长的图片就可以了</h2>
+			<ion-item style="padding:0px" ng-repeat="img in pdescimgs">
+		    	<img class="full-image" ng-src="{{img}}">
 			</ion-item>
 		</ion-list>
 	</ion-content>
